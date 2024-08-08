@@ -7,25 +7,23 @@ class DiceRoll {
 
     }
 
-    get dieRoll() {// use "this.sides" here
+    dieRoll() {// use "this.sides" here
         return Math.floor(Math.random() * (this.sides)) + 1;
     }
 
-    get rollAll() { // use "this.times" and "this.dieRoll" here
+    rollAll() { // use "this.times" and "this.dieRoll" here
+        this.rollsum = 0;
+        let rollValue = null;
         for (let i = 0; i < this.times; i ++) {
-            this.rolls.push(this.dieRoll())
+            rollValue = this.dieRoll()
+            this.rolls.push(rollValue)
+            this.rollsum = this.rollsum + rollValue
         }
 
-    }
-
-    get total() { // Add them up and return the total
-    this.rollsum = 0;
-        for (let i = 0; i < this.times; i++) {
-            this.rollsum = this.rollsum + this.dieRoll()
-        }
     }
 
     get output() { // form the string using "this.rolls" and "this.total"
-        this.diceOutputString = `Rolled a die with ${this.sides} sides ${this.times} times: ${this.rolls}; total ${this.rollsum}`
+        this.diceOutputString = `Rolled a die with ${this.sides} sides ${this.times} times: ${this.rolls}; total ${this.rollsum}`;
+        return this.diceOutputString
     }
 }
